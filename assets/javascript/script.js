@@ -1,5 +1,26 @@
 //Testing and figuring out how the AJAX call for the twitch API works
 //If it errors 400, check Client ID(update)
+jQuery.ajaxPrefilter(function (options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
+
+$("#test-Btn").on("click", function () {
+    event.preventDefault();
+    var input = $("#testsearch").val().trim();
+    $.ajax({
+        type: "GET",
+        url: "http://api.walmartlabs.com/v1/search?apiKey=knmwws2qd2rtru6gzrcbehms&query=" + input,
+
+
+    }).then(function(response){
+        console.log(response);
+        var gameMSRP = response.items[0].msrp;
+        $("#price").html("Price: " + gameMSRP);
+    })
+
+})
 
 $("#test-Btn").on("click", function () {
     event.preventDefault();
