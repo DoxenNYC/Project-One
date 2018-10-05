@@ -13,8 +13,15 @@ $("#test-Btn").on("click", function () {
             "Accept": "application/vnd.twitchtv.v5+json"
         },
     }).then(function (response) {
-        console.log(response);
+        $("#twitch-embed").empty();
+        console.log(response)
+        var twitchDisplayName = response.streams[0].channel.display_name;
+        new Twitch.Embed("twitch-embed", {
+            width: 854,
+            height: 480,
+            channel: twitchDisplayName //search input goes here
+        });
     });
-
 })
+
 
