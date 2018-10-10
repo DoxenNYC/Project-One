@@ -41,7 +41,10 @@ $("#test-Btn").on("click", function (event) {
         console.log(rating);
         $("#customerRating").html("Customer Rating out of 100: " + rating)
         var cover = response[0].cover.url;
-        $("#photogame").attr("src", `http:${cover}`);
+        var newPic = $("<img>");
+        newPic.attr("src", `http:${cover}`);
+        newPic.css({"width" : "150px", "height" : "150px"});
+        $("#photogame").html(newPic);
     });
 })
 
