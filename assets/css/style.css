@@ -59,9 +59,11 @@ background-color: rgb(207, 207, 207);
 
 }
 
-#rating {
-    
-    
+
+#customerRating {
+    position: absolute;
+    margin-top: 44%;
+    margin-left: 25%;
     font-size: 30px;
     color:rgb(0, 0, 0);
 
