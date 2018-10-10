@@ -17,6 +17,8 @@
         crossorigin="anonymous">
     <!-- Link to the css file -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script> -->
 </head>
 
 <body>
@@ -36,12 +38,47 @@
             </div>
           </div>  
         </div>
-        <div id="rating">Title</div>
-        <div id="summary">Summary</div>
-        <div id="price">Price</div>
-        <img id="zeldagame" src="../groupproject1/assets/images/zelda_breath.jpg" alt="" height="300" width="210">
+        <div id="title"></div>
+        <div id="rating"></div>
+        <div id="price"></div>
         <div id="twitch-embed"></div>
-
+        <div id="photogame"></div>
+        
+        <!-- <img id="photogame" src="../groupproject1/assets/images/zelda_breath.jpg" alt="" height="300" width="210"> -->
+        
+       <!-- FIREBASE -->
+        <script>
+            // Initialize Firebase
+            var config = {
+              apiKey: "AIzaSyCAyx-aQJ1mQFEvJABqPnyU88rWI45b8js",
+              authDomain: "groupproject1-5531a.firebaseapp.com",
+              databaseURL: "https://groupproject1-5531a.firebaseio.com",
+              projectId: "groupproject1-5531a",
+              storageBucket: "groupproject1-5531a.appspot.com",
+              messagingSenderId: "320551251443"
+            };
+            firebase.initializeApp(config);
+          </script>
+          <script>
+              // Print the initial data to the console.
+          console.log(snapshot.val());
+          var database = firebase.database();
+          console.log(firebase);
+    
+          <Button id="test-Btn">Search</Button>
+            var clickCounter = 0; 
+            $("#click-button").on("click", function() {
+                clickCounter++;
+                database.ref().set({
+            clickCount: clickCounter
+          });
+    
+            }); 
+          
+    
+          </script>
+        
+    <!-- FIREBASE ENDS -->
         
           
     <!-- <form>

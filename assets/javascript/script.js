@@ -1,5 +1,35 @@
 //Testing and figuring out how the AJAX call for the twitch API works
+//Testing and figuring out how the AJAX call for the twitch API works
 //If it errors 400, check Client ID(update)
+jQuery.ajaxPrefilter(function (options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
+
+$("#test-Btn").on("click", function () {
+    event.preventDefault();
+    var input = $("#testsearch").val().trim();
+    $.ajax({
+        type: "GET",
+        url: "http://api.walmartlabs.com/v1/search?apiKey=knmwws2qd2rtru6gzrcbehms&query=" + input,
+
+
+    }).then(function(response){
+        console.log(response);
+        var gameMSRP = response.items[0].msrp;
+        var query = response.items[0].query;
+        var thumbnailImage = response.items[0].thumbnailImage;
+
+        
+        $("#price").text("Price: " + gameMSRP);
+        $("#title").text("Title: " + query);
+        $("#photogame").html(thumbnailImage);
+        // $("#rating").html("rating: " + rating);
+
+    })
+
+})
 
 $("#test-Btn").on("click", function () {
     event.preventDefault();
@@ -17,11 +47,21 @@ $("#test-Btn").on("click", function () {
         console.log(response)
         var twitchDisplayName = response.streams[0].channel.display_name;
         new Twitch.Embed("twitch-embed", {
-            width: 854,
-            height: 480,
+            width: 754,
+            height: 380,
             channel: twitchDisplayName //search input goes here
         });
     });
 })
+        
+
+
+        // for (i = 0; i < response.length; i++) {
+        //     $("#title").append(response[i].brandName);
+        //     $("#price").append(response[i].salePrice);
+        //     $("#rating").append(response[i].customerRating);
+
+
+       
 
 
