@@ -19,7 +19,7 @@ $("#test-Btn").on("click", function () {
         console.log(response);
         var gameMSRP = response.items[0].msrp;
 
-        $("#price").html("Price: " + gameMSRP);
+        $("#price").html("Price: $" + gameMSRP + " USD");
     })
 
 })
@@ -36,7 +36,12 @@ $("#test-Btn").on("click", function (event) {
     }).then(function (response) {
         console.log(response);
         console.log(response[0].name);
-        $("#title").text("title " + response[0].name);
+        $("#title").text("Title: " + response[0].name);
+        var rating = response[0].total_rating;
+        console.log(rating);
+        $("#customerRating").html("Customer Rating out of 100: " + rating)
+        var cover = response[0].cover.url;
+        $("#photogame").attr("src", `http:${cover}`);
     });
 })
 
@@ -65,16 +70,9 @@ $("#test-Btn").on("click", function (event) {
 })
         
 
-
-        // for (i = 0; i < response.length; i++) {
-        //     $("#title").append(response[i].brandName);
-        //     $("#price").append(response[i].salePrice);
-        //     $("#rating").append(response[i].customerRating);
-
-
        
 
-  // Initialize Firebase
+//   Initialize Firebase
   var config = {
     apiKey: "AIzaSyCAyx-aQJ1mQFEvJABqPnyU88rWI45b8js",
     authDomain: "groupproject1-5531a.firebaseapp.com",
