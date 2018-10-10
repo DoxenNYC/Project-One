@@ -19,7 +19,7 @@ $("#test-Btn").on("click", function () {
         console.log(response);
         var gameMSRP = response.items[0].msrp;
 
-        $("#price").html("Price: " + gameMSRP);
+        $("#price").html("Price: $" + gameMSRP + " USD");
     })
 
 })
@@ -36,7 +36,7 @@ $("#test-Btn").on("click", function (event) {
     }).then(function (response) {
         console.log(response);
         console.log(response[0].name);
-        $("#title").text("title " + response[0].name);
+        $("#title").text("Title: " + response[0].name);
         var rating = response[0].total_rating;
         console.log(rating);
         $("#customerRating").html("Customer Rating out of 100: " + rating)
@@ -72,23 +72,23 @@ $("#test-Btn").on("click", function (event) {
 
        
 
-  // Initialize Firebase
-//   var config = {
-//     apiKey: "AIzaSyCAyx-aQJ1mQFEvJABqPnyU88rWI45b8js",
-//     authDomain: "groupproject1-5531a.firebaseapp.com",
-//     databaseURL: "https://groupproject1-5531a.firebaseio.com",
-//     projectId: "groupproject1-5531a",
-//     storageBucket: "groupproject1-5531a.appspot.com",
-//     messagingSenderId: "320551251443"
-//   };
-//   firebase.initializeApp(config);
-//     var database = firebase.database();
-//   var clickCounter = 0;
-//   $("#test-Btn").on("click", function() {
-//     clickCounter++;
-//     database.ref().set({
-//         clickCount: clickCounter
-//       });
-//     });
+//   Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCAyx-aQJ1mQFEvJABqPnyU88rWI45b8js",
+    authDomain: "groupproject1-5531a.firebaseapp.com",
+    databaseURL: "https://groupproject1-5531a.firebaseio.com",
+    projectId: "groupproject1-5531a",
+    storageBucket: "groupproject1-5531a.appspot.com",
+    messagingSenderId: "320551251443"
+  };
+  firebase.initializeApp(config);
+    var database = firebase.database();
+  var clickCounter = 0;
+  $("#test-Btn").on("click", function() {
+    clickCounter++;
+    database.ref().set({
+        clickCount: clickCounter
+      });
+    });
 
 
