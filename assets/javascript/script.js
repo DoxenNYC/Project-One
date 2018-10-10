@@ -14,15 +14,32 @@ $("#test-Btn").on("click", function () {
         url: "http://api.walmartlabs.com/v1/search?apiKey=knmwws2qd2rtru6gzrcbehms&query=" + input,
 
 
-    }).then(function(response){
+    }).then(function (response) {
         console.log(response);
         var gameMSRP = response.items[0].msrp;
-        $("#price").html("Price: " + gameMSRP);
+        $("#price").html("Price: $" + gameMSRP);
     })
 
 })
+$("#test-Btn").on("click", function (event) {
+    event.preventDefault();
+    var input = $("#testsearch").val().trim();
+    $.ajax({
+        url: "https://api-endpoint.igdb.com/games/?search="+ input +"&fields=*&limit=!",
+        method: "GET",
+        headers: {
+            "user-key": "64bac0cd3f7f63493f86d418dc5f3363",
+            Accept: "application/json"
+        }
+    }).then(function (response) {
+        console.log(response);
+        console.log(response[0].name);
+        $("#title").text("title " + response[0].name);
+    });
+})
 
-$("#test-Btn").on("click", function () {
+
+$("#test-Btn").on("click", function (event) {
     event.preventDefault();
     var input = $("#testsearch").val().trim();
     $.ajax({
