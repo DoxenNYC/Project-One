@@ -18,14 +18,7 @@ $("#test-Btn").on("click", function () {
     }).then(function(response){
         console.log(response);
         var gameMSRP = response.items[0].msrp;
-        var query = response.items[0].query;
-        var thumbnailImage = response.items[0].thumbnailImage;
-
-        
-        $("#price").text("Price: " + gameMSRP);
-        $("#title").text("Title: " + query);
-        $("#photogame").html(thumbnailImage);
-        // $("#rating").html("rating: " + rating);
+        $("#price").html("Price: " + gameMSRP);
 
     })
 
