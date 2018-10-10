@@ -74,4 +74,23 @@ $("#test-Btn").on("click", function (event) {
 
        
 
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCAyx-aQJ1mQFEvJABqPnyU88rWI45b8js",
+    authDomain: "groupproject1-5531a.firebaseapp.com",
+    databaseURL: "https://groupproject1-5531a.firebaseio.com",
+    projectId: "groupproject1-5531a",
+    storageBucket: "groupproject1-5531a.appspot.com",
+    messagingSenderId: "320551251443"
+  };
+  firebase.initializeApp(config);
+    var database = firebase.database();
+  var clickCounter = 0;
+  $("#test-Btn").on("click", function() {
+    clickCounter++;
+    database.ref().set({
+        clickCount: clickCounter
+      });
+    });
+
 
