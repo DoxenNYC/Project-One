@@ -17,7 +17,7 @@
         crossorigin="anonymous">
     <!-- Link to the css file -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    
+
 
     <!-- <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script> -->
 
@@ -43,68 +43,20 @@
         </div>
 
         <div id="title"></div>
-        <div id="rating"></div>
+        <div id="customerRating">2352345</div>
         <div id="price"></div>
         <div id="twitch-embed"></div>
-        <div id="photogame">photogame</div>
-        
-        <!-- <img id="photogame" src="../groupproject1/assets/images/zelda_breath.jpg" alt="" height="300" width="210"> -->
-        
-       <!-- FIREBASE -->
-        <!-- <script>
-            // Initialize Firebase
-            var config = {
-              apiKey: "AIzaSyCAyx-aQJ1mQFEvJABqPnyU88rWI45b8js",
-              authDomain: "groupproject1-5531a.firebaseapp.com",
-              databaseURL: "https://groupproject1-5531a.firebaseio.com",
-              projectId: "groupproject1-5531a",
-              storageBucket: "groupproject1-5531a.appspot.com",
-              messagingSenderId: "320551251443"
-            };
-            firebase.initializeApp(config);
-          </script>
-          <script>
-              // Print the initial data to the console.
-          console.log(snapshot.val());
-          var database = firebase.database();
-          console.log(firebase);
-    
-          <Button id="test-Btn">Search</Button>
-            var clickCounter = 0; 
-            $("#click-button").on("click", function() {
-                clickCounter++;
-                database.ref().set({
-            clickCount: clickCounter
-          });
-    
-            }); 
-          
-    
-          </script> -->
-        
-    <!-- FIREBASE ENDS -->
-        
-          
-    <!-- <form>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Type in a Game name</label>
-            <input type="text" class="form-control" id="testsearch" placeholder="test search">
-        </div>
-    </form>
-    <button class="btn btn-primary" id="test-Btn" type="submit">Button</button> -->
+        <img id="photogame" src="" alt="game cover" height="120" width="120">
 
-    
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
+        <!-- Links for Jquery and AJAX -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
 
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
-
-    <!-- Links for Jquery and AJAX -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-        
-    <!-- Link to the Javascript file -->
-    <script src="assets/javascript/script.js"></script>
+        <!-- Link to the Javascript file -->
+        <script src="assets/javascript/script.js"></script>
 </body>
 
 </html>
