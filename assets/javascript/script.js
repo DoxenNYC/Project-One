@@ -7,6 +7,20 @@ jQuery.ajaxPrefilter(function (options) {
     }
 });
 
+
+//   Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDidMgp5MjZqGj-XEKLJLkR2SbgTLj6hdM",
+    authDomain: "groupproject-c4be9.firebaseapp.com",
+    databaseURL: "https://groupproject-c4be9.firebaseio.com",
+    projectId: "groupproject-c4be9",
+    storageBucket: "groupproject-c4be9.appspot.com",
+    messagingSenderId: "250785848685"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database()
+
 $("#test-Btn").on("click", function () {
     event.preventDefault();
     var input = $("#testsearch").val().trim();
@@ -27,7 +41,7 @@ $("#test-Btn").on("click", function (event) {
     event.preventDefault();
     var input = $("#testsearch").val().trim();
     $.ajax({
-        url: "https://api-endpoint.igdb.com/games/?search="+ input +"&fields=*&limit=!",
+        url: "https://api-endpoint.igdb.com/games/?search=" + input + "&fields=*&limit=!",
         method: "GET",
         headers: {
             "user-key": "64bac0cd3f7f63493f86d418dc5f3363",
@@ -43,12 +57,12 @@ $("#test-Btn").on("click", function (event) {
         var cover = response[0].cover.url;
         var newPic = $("<img>");
         newPic.attr("src", `http:${cover}`);
-        newPic.css({"width" : "150px", "height" : "150px"});
+        newPic.css({ "width": "150px", "height": "150px" });
         $("#photogame").html(newPic);
     });
 })
 
-
+var clickCounter;
 $("#test-Btn").on("click", function (event) {
     event.preventDefault();
     var input = $("#testsearch").val().trim();
@@ -69,29 +83,24 @@ $("#test-Btn").on("click", function (event) {
             height: 380,
             channel: twitchDisplayName //search input goes here
         });
+        
+        clickCounter++;
+        database.ref().set({
+            clickCount: clickCounter
+        });
+
     });
 })
-        
-
-       
-
-//   Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCAyx-aQJ1mQFEvJABqPnyU88rWI45b8js",
-    authDomain: "groupproject1-5531a.firebaseapp.com",
-    databaseURL: "https://groupproject1-5531a.firebaseio.com",
-    projectId: "groupproject1-5531a",
-    storageBucket: "groupproject1-5531a.appspot.com",
-    messagingSenderId: "320551251443"
-  };
-  firebase.initializeApp(config);
-    var database = firebase.database();
-  var clickCounter = 0;
-  $("#test-Btn").on("click", function() {
-    clickCounter++;
-    database.ref().set({
-        clickCount: clickCounter
-      });
-    });
 
 
+
+
+
+database.ref().on("value", function(snapshot) {
+    //changes the text inside heartHolder to the value of the snapshot of firebaseNumberOfHearts
+    console.log("yo")
+    console.log(snapshot.val())
+    clickCounter = snapshot.val().clickCount
+    $("#count").html(clickCounter + " games have been searched using this site!");
+
+})
